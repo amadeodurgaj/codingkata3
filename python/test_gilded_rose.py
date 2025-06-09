@@ -10,5 +10,11 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual("foo", items[0].name)
 
+    def test_normal_item_degrades_in_quality(self):
+        items = [Item("Elixir of the Mongoose", 5, 10)]
+        GildedRose(items).update_quality()
+        self.assertEqual(9, items[0].quality)
+        self.assertEqual(4, items[0].sell_in)
+
 if __name__ == '__main__':
     unittest.main()
