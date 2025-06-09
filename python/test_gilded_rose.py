@@ -16,5 +16,10 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(9, items[0].quality)
         self.assertEqual(4, items[0].sell_in)
 
+    def test_quality_never_negative(self):
+        items = [Item("Elixir of the Mongoose", 5, 0)]
+        GildedRose(items).update_quality()
+        self.assertEqual(0, items[0].quality)
+
 if __name__ == '__main__':
     unittest.main()
