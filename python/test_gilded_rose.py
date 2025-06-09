@@ -62,6 +62,18 @@ class GildedRoseTest(unittest.TestCase):
         items = [Item("Conjured Mana Cake", 3, 6)]
         GildedRose(items).update_quality()
         self.assertEqual(4, items[0].quality)
+
+    def test_quality_bounds(self):
+        items = [
+            Item("Aged Brie", 1, 50),
+            Item("Elixir of the Mongoose", 1, 0),
+            Item("Conjured Mana Cake", 0, 1),
+        ]
+        GildedRose(items).update_quality()
+        self.assertEqual(50, items[0].quality)
+        self.assertEqual(0, items[1].quality)
+        self.assertEqual(0, items[2].quality)
+
     
     
 if __name__ == '__main__':
