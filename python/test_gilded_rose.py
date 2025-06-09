@@ -46,6 +46,12 @@ class GildedRoseTest(unittest.TestCase):
         items = [Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)]
         GildedRose(items).update_quality()
         self.assertEqual(0, items[0].quality)
+
+    def test_sulfuras_never_changes(self):
+        items = [Item("Sulfuras, Hand of Ragnaros", 0, 80)]
+        GildedRose(items).update_quality()
+        self.assertEqual(80, items[0].quality)
+        self.assertEqual(0, items[0].sell_in)
     
 if __name__ == '__main__':
     unittest.main()
